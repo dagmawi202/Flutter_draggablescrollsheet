@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_draggablescrollablesheet/comment_sheet.dart';
 
 void main() {
   runApp(const MyApp());
@@ -24,7 +25,8 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      // home: const MainDev(),
+      home: const MyHomePage(title: 'Flutter Modal Bottom '),
     );
   }
 }
@@ -77,7 +79,7 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              "MODAL BOTTOM SHEET EXAMPLE",
+              "",
               style: TextStyle(
                   fontStyle: FontStyle.italic,
                   letterSpacing: 0.4,
@@ -102,64 +104,113 @@ class _MyHomePageState extends State<MyHomePage> {
                         false, // specifies whether the bottom sheet will be dismissed when user taps on the scrim.
                     barrierColor: Colors.transparent,
                     builder: (context) {
-                      return DraggableScrollableSheet(
-                          expand:
-                              false, //This field specifies whether the widget should expand to fill the available space in its parent or not. The default value is true. We have not specified because we want it to be true.
-                          initialChildSize:
-                              0.6, //This field specifies the initial size of the bottom draggable sheet you want to appear on the fraction of the screen and takes a double value. Its default value is 0.5. Its value range from 0 – 1.0.
-                          minChildSize:
-                              0.5, //This field specifies the minimum size of the DraggableScrollableSheet widget that is when any user will scroll down to close the widget, the minimum height will appear. Its default value is 0.25 and ranges from 0 – 1.0.
-                          maxChildSize:
-                              0.9, // This field specifies the maximum size of the DraggableScrollableSheet widget that is when any user will scroll up to open the widget, the maximum height will appear. Its default value is 1.0 and ranges from 0 – 1.0. It also specifies the fraction of the screen to be occupied.
-                          builder: (_, scrollController) {
-                            return Container(
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                ),
-                                child: Stack(children: [
-                                  Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: <Widget>[
-                                        ListTile(
-                                          leading: new Icon(Icons.photo),
-                                          title: new Text('Photo'),
-                                          onTap: () {
-                                            Navigator.pop(context);
-                                          },
-                                        ),
-                                        ListTile(
-                                          leading: new Icon(Icons.music_note),
-                                          title: new Text('Music'),
-                                          onTap: () {
-                                            Navigator.pop(context);
-                                          },
-                                        ),
-                                        ListTile(
-                                          leading: new Icon(Icons.videocam),
-                                          title: new Text('Video'),
-                                          onTap: () {
-                                            Navigator.pop(context);
-                                          },
-                                        ),
-                                        ListTile(
-                                          leading: new Icon(Icons.share),
-                                          title: new Text('Share'),
-                                          onTap: () {
-                                            Navigator.pop(context);
-                                          },
-                                        ),
-                                      ])
-                                ]));
-                          });
+                      return CommentSheet();
                     });
               },
               padding:
                   EdgeInsets.only(left: 30, right: 30, top: 15, bottom: 15),
               color: Colors.pink,
               child: Text(
-                'Click Me',
+                'Open Only ',
+                style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.w600,
+                    letterSpacing: 0.6),
+              ),
+            ),
+            Text(
+              "_________",
+              style: TextStyle(
+                  fontStyle: FontStyle.italic,
+                  letterSpacing: 0.4,
+                  fontWeight: FontWeight.w600),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            RaisedButton(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(10.0))),
+              onPressed: () {
+                showModalBottomSheet(
+                    context: context,
+                    isScrollControlled:
+                        true, //specifies whether this is a route for a bottom sheet that will utilize DraggableScrollableSheet.
+                    useRootNavigator:
+                        true, // This is useful in the case that a modal BottomSheet needs to be displayed above all other content but the caller is inside another Navigator.
+                    enableDrag:
+                        true, // parameter specifies whether the bottom sheet can be dragged up and down and dismissed by swiping downwards.
+                    isDismissible:
+                        true, // specifies whether the bottom sheet will be dismissed when user taps on the scrim.
+                    barrierColor: Colors.transparent,
+                    builder: (context) {
+                      return Column(
+                        mainAxisSize: MainAxisSize.max,
+                        children: <Widget>[
+                          ListTile(
+                            leading: new Icon(Icons.photo),
+                            title: new Text('Photo'),
+                            onTap: () {
+                              Navigator.pop(context);
+                            },
+                          ),
+                          ListTile(
+                            leading: new Icon(Icons.music_note),
+                            title: new Text('Music'),
+                            onTap: () {
+                              Navigator.pop(context);
+                            },
+                          ),
+                          ListTile(
+                            leading: new Icon(Icons.videocam),
+                            title: new Text('Video'),
+                            onTap: () {
+                              Navigator.pop(context);
+                            },
+                          ),
+                          ListTile(
+                            leading: new Icon(Icons.share),
+                            title: new Text('Share'),
+                            onTap: () {
+                              Navigator.pop(context);
+                            },
+                          ),
+                        ],
+                      );
+                    });
+              },
+              padding:
+                  EdgeInsets.only(left: 30, right: 30, top: 15, bottom: 15),
+              color: Colors.pink,
+              child: Text(
+                'Only showModalBottomSheet',
+                style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.w600,
+                    letterSpacing: 0.6),
+              ),
+            ),
+            Text(
+              "_________",
+              style: TextStyle(
+                  fontStyle: FontStyle.italic,
+                  letterSpacing: 0.4,
+                  fontWeight: FontWeight.w600),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            RaisedButton(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(10.0))),
+              onPressed: () {
+                //  CommentSheet();
+              },
+              padding:
+                  EdgeInsets.only(left: 30, right: 30, top: 15, bottom: 15),
+              color: Colors.pink,
+              child: Text(
+                'Only DraggableScrollableSheet',
                 style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.w600,
