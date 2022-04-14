@@ -63,53 +63,94 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
     return Scaffold(
       appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
+        title: Text(
+          'Modal Bottom Sheet',
+          style: TextStyle(color: Colors.white),
+        ),
+        centerTitle: true,
       ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
+      body: Container(
+        alignment: Alignment.center,
         child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
+          children: [
             Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
+              "MODAL BOTTOM SHEET EXAMPLE",
+              style: TextStyle(
+                  fontStyle: FontStyle.italic,
+                  letterSpacing: 0.4,
+                  fontWeight: FontWeight.w600),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            RaisedButton(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(10.0))),
+              onPressed: () {
+                showModalBottomSheet(
+                    context: context,
+                    isScrollControlled:
+                        true, //specifies whether this is a route for a bottom sheet that will utilize DraggableScrollableSheet.
+                    useRootNavigator:
+                        true, // This is useful in the case that a modal BottomSheet needs to be displayed above all other content but the caller is inside another Navigator.
+                    enableDrag:
+                        true, // parameter specifies whether the bottom sheet can be dragged up and down and dismissed by swiping downwards.
+                    isDismissible:
+                        true, // specifies whether the bottom sheet will be dismissed when user taps on the scrim.
+                    barrierColor: Colors.transparent,
+                    builder: (context) {
+                      return Column(
+                        mainAxisSize: MainAxisSize.max,
+                        children: <Widget>[
+                          ListTile(
+                            leading: new Icon(Icons.photo),
+                            title: new Text('Photo'),
+                            onTap: () {
+                              Navigator.pop(context);
+                            },
+                          ),
+                          ListTile(
+                            leading: new Icon(Icons.music_note),
+                            title: new Text('Music'),
+                            onTap: () {
+                              Navigator.pop(context);
+                            },
+                          ),
+                          ListTile(
+                            leading: new Icon(Icons.videocam),
+                            title: new Text('Video'),
+                            onTap: () {
+                              Navigator.pop(context);
+                            },
+                          ),
+                          ListTile(
+                            leading: new Icon(Icons.share),
+                            title: new Text('Share'),
+                            onTap: () {
+                              Navigator.pop(context);
+                            },
+                          ),
+                        ],
+                      );
+                    });
+              },
+              padding:
+                  EdgeInsets.only(left: 30, right: 30, top: 15, bottom: 15),
+              color: Colors.pink,
+              child: Text(
+                'Click Me',
+                style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.w600,
+                    letterSpacing: 0.6),
+              ),
             ),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
