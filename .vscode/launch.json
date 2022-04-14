@@ -5,20 +5,18 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "flutter_draggablescrollablesheet",
+            "name": "test",
             "request": "launch",
             "type": "dart"
         },
         {
-            "name": "flutter_draggablescrollablesheet (debug mode)",
+            "name": "test (debug mode)",
             "request": "launch",
-            "type": "dart"
-          
-        ,
+            "type": "dart",
             "flutterMode": "debug"
         },
         {
-            "name": "flutter_draggablescrollablesheet (release mode)",
+            "name": "test (release mode)",
             "request": "launch",
             "type": "dart",
             "flutterMode": "release"

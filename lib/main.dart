@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_draggablescrollablesheet/comment_sheet.dart';
+import 'package:test/comment_sheet.dart';
+import 'package:test/testt.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -25,8 +26,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      // home: const MainDev(),
-      home: const MyHomePage(title: 'Flutter Modal Bottom '),
+      home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
@@ -63,7 +63,6 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -75,6 +74,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Container(
         alignment: Alignment.center,
+        color: Colors.white10,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -103,9 +103,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     isDismissible:
                         false, // specifies whether the bottom sheet will be dismissed when user taps on the scrim.
                     barrierColor: Colors.transparent,
-                    builder: (context) {
-                      return CommentSheet();
-                    });
+                    builder: (_) => CommentSheet());
               },
               padding:
                   EdgeInsets.only(left: 30, right: 30, top: 15, bottom: 15),
@@ -146,6 +144,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     builder: (context) {
                       return Column(
                         mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: <Widget>[
                           ListTile(
                             leading: new Icon(Icons.photo),
@@ -204,7 +203,23 @@ class _MyHomePageState extends State<MyHomePage> {
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(Radius.circular(10.0))),
               onPressed: () {
-                //  CommentSheet();
+                showModalBottomSheet(
+                    backgroundColor: Colors.yellow,
+                    context: context,
+                    isScrollControlled: true,
+                    isDismissible: true,
+                    builder: (BuildContext context) {
+                      return DraggableScrollableSheet(
+                          initialChildSize: 0.40, //set this as you want
+                          maxChildSize: 0.75, //set this as you want
+                          minChildSize: 0.38, //set this as you want
+                          expand: true,
+                          builder: (context, scrollController) {
+                            return Container(
+                              child: Text("Content"),
+                            ); //whatever you're returning, does not have to be a Container
+                          });
+                    });
               },
               padding:
                   EdgeInsets.only(left: 30, right: 30, top: 15, bottom: 15),
