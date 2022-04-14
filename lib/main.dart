@@ -116,122 +116,123 @@ class _MyHomePageState extends State<MyHomePage> {
                     letterSpacing: 0.6),
               ),
             ),
-            Text(
-              "_________",
-              style: TextStyle(
-                  fontStyle: FontStyle.italic,
-                  letterSpacing: 0.4,
-                  fontWeight: FontWeight.w600),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            RaisedButton(
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(10.0))),
-              onPressed: () {
-                showModalBottomSheet(
-                    context: context,
-                    isScrollControlled:
-                        true, //specifies whether this is a route for a bottom sheet that will utilize DraggableScrollableSheet.
-                    useRootNavigator:
-                        true, // This is useful in the case that a modal BottomSheet needs to be displayed above all other content but the caller is inside another Navigator.
-                    enableDrag:
-                        true, // parameter specifies whether the bottom sheet can be dragged up and down and dismissed by swiping downwards.
-                    isDismissible:
-                        true, // specifies whether the bottom sheet will be dismissed when user taps on the scrim.
-                    barrierColor: Colors.transparent,
-                    builder: (context) {
-                      return Column(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: <Widget>[
-                          ListTile(
-                            leading: new Icon(Icons.photo),
-                            title: new Text('Photo'),
-                            onTap: () {
-                              Navigator.pop(context);
-                            },
-                          ),
-                          ListTile(
-                            leading: new Icon(Icons.music_note),
-                            title: new Text('Music'),
-                            onTap: () {
-                              Navigator.pop(context);
-                            },
-                          ),
-                          ListTile(
-                            leading: new Icon(Icons.videocam),
-                            title: new Text('Video'),
-                            onTap: () {
-                              Navigator.pop(context);
-                            },
-                          ),
-                          ListTile(
-                            leading: new Icon(Icons.share),
-                            title: new Text('Share'),
-                            onTap: () {
-                              Navigator.pop(context);
-                            },
-                          ),
-                        ],
-                      );
-                    });
-              },
-              padding:
-                  EdgeInsets.only(left: 30, right: 30, top: 15, bottom: 15),
-              color: Colors.pink,
-              child: Text(
-                'Only showModalBottomSheet',
-                style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.w600,
-                    letterSpacing: 0.6),
-              ),
-            ),
-            Text(
-              "_________",
-              style: TextStyle(
-                  fontStyle: FontStyle.italic,
-                  letterSpacing: 0.4,
-                  fontWeight: FontWeight.w600),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            RaisedButton(
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(10.0))),
-              onPressed: () {
-                showModalBottomSheet(
-                    backgroundColor: Colors.yellow,
-                    context: context,
-                    isScrollControlled: true,
-                    isDismissible: true,
-                    builder: (BuildContext context) {
-                      return DraggableScrollableSheet(
-                          initialChildSize: 0.40, //set this as you want
-                          maxChildSize: 0.75, //set this as you want
-                          minChildSize: 0.38, //set this as you want
-                          expand: true,
-                          builder: (context, scrollController) {
-                            return Container(
-                              child: Text("Content"),
-                            ); //whatever you're returning, does not have to be a Container
-                          });
-                    });
-              },
-              padding:
-                  EdgeInsets.only(left: 30, right: 30, top: 15, bottom: 15),
-              color: Colors.pink,
-              child: Text(
-                'Only DraggableScrollableSheet',
-                style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.w600,
-                    letterSpacing: 0.6),
-              ),
-            ),
+
+            // Text(
+            //   "_________",
+            //   style: TextStyle(
+            //       fontStyle: FontStyle.italic,
+            //       letterSpacing: 0.4,
+            //       fontWeight: FontWeight.w600),
+            // ),
+            // SizedBox(
+            //   height: 20,
+            // ),
+            // RaisedButton(
+            //   shape: RoundedRectangleBorder(
+            //       borderRadius: BorderRadius.all(Radius.circular(10.0))),
+            //   onPressed: () {
+            //     showModalBottomSheet(
+            //         context: context,
+            //         isScrollControlled:
+            //             true, //specifies whether this is a route for a bottom sheet that will utilize DraggableScrollableSheet.
+            //         useRootNavigator:
+            //             true, // This is useful in the case that a modal BottomSheet needs to be displayed above all other content but the caller is inside another Navigator.
+            //         enableDrag:
+            //             true, // parameter specifies whether the bottom sheet can be dragged up and down and dismissed by swiping downwards.
+            //         isDismissible:
+            //             true, // specifies whether the bottom sheet will be dismissed when user taps on the scrim.
+            //         barrierColor: Colors.transparent,
+            //         builder: (context) {
+            //           return Column(
+            //             mainAxisSize: MainAxisSize.max,
+            //             mainAxisAlignment: MainAxisAlignment.spaceAround,
+            //             children: <Widget>[
+            //               ListTile(
+            //                 leading: new Icon(Icons.photo),
+            //                 title: new Text('Photo'),
+            //                 onTap: () {
+            //                   Navigator.pop(context);
+            //                 },
+            //               ),
+            //               ListTile(
+            //                 leading: new Icon(Icons.music_note),
+            //                 title: new Text('Music'),
+            //                 onTap: () {
+            //                   Navigator.pop(context);
+            //                 },
+            //               ),
+            //               ListTile(
+            //                 leading: new Icon(Icons.videocam),
+            //                 title: new Text('Video'),
+            //                 onTap: () {
+            //                   Navigator.pop(context);
+            //                 },
+            //               ),
+            //               ListTile(
+            //                 leading: new Icon(Icons.share),
+            //                 title: new Text('Share'),
+            //                 onTap: () {
+            //                   Navigator.pop(context);
+            //                 },
+            //               ),
+            //             ],
+            //           );
+            //         });
+            //   },
+            //   padding:
+            //       EdgeInsets.only(left: 30, right: 30, top: 15, bottom: 15),
+            //   color: Colors.pink,
+            //   child: Text(
+            //     'Only showModalBottomSheet',
+            //     style: TextStyle(
+            //         color: Colors.white,
+            //         fontWeight: FontWeight.w600,
+            //         letterSpacing: 0.6),
+            //   ),
+            // ),
+            // Text(
+            //   "_________",
+            //   style: TextStyle(
+            //       fontStyle: FontStyle.italic,
+            //       letterSpacing: 0.4,
+            //       fontWeight: FontWeight.w600),
+            // ),
+            // SizedBox(
+            //   height: 20,
+            // ),
+            // RaisedButton(
+            //   shape: RoundedRectangleBorder(
+            //       borderRadius: BorderRadius.all(Radius.circular(10.0))),
+            //   onPressed: () {
+            //     showModalBottomSheet(
+            //         backgroundColor: Colors.yellow,
+            //         context: context,
+            //         isScrollControlled: true,
+            //         isDismissible: true,
+            //         builder: (BuildContext context) {
+            //           return DraggableScrollableSheet(
+            //               initialChildSize: 0.40, //set this as you want
+            //               maxChildSize: 0.75, //set this as you want
+            //               minChildSize: 0.38, //set this as you want
+            //               expand: true,
+            //               builder: (context, scrollController) {
+            //                 return Container(
+            //                   child: Text("Content"),
+            //                 ); //whatever you're returning, does not have to be a Container
+            //               });
+            //         });
+            //   },
+            //   padding:
+            //       EdgeInsets.only(left: 30, right: 30, top: 15, bottom: 15),
+            //   color: Colors.pink,
+            //   child: Text(
+            //     'Only DraggableScrollableSheet',
+            //     style: TextStyle(
+            //         color: Colors.white,
+            //         fontWeight: FontWeight.w600,
+            //         letterSpacing: 0.6),
+            //   ),
+            // ),
           ],
         ),
       ),

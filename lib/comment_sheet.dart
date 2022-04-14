@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:test/add_comment.dart';
 
 class CommentSheet extends StatefulWidget {
   const CommentSheet({Key? key}) : super(key: key);
@@ -32,6 +33,7 @@ class _CommentSheetState extends State<CommentSheet> {
               ),
               child:
                   Column(mainAxisAlignment: MainAxisAlignment.start, children: [
+                _buildHeader(),
                 Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisSize: MainAxisSize.min,
@@ -124,5 +126,25 @@ class _CommentSheetState extends State<CommentSheet> {
                 ),
               ]));
         });
+  }
+
+  Widget _buildHeader() {
+    return Column(
+      children: <Widget>[
+        Center(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 16),
+            child: Container(
+              width: 40,
+              height: 4,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: Color(0xFFA19DA9)),
+            ),
+          ),
+        ),
+        Divider(height: 1, thickness: 1, color: Color(0xFF151417)),
+      ],
+    );
   }
 }
